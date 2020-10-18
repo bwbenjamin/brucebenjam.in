@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <style>
+          h1 {
+    text-align: left;
+}
+h1 {
+    text-align: center;
+}
+.perspective {
+    perspective: 0px;
+    perspective-origin: 50vw 50vh;
+    width: 500px;
+    margin: 0 0;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 100;
+    color: #fff;
+    text-align: center;
+    
+}
+.cube {
+    position: relative;
+    
+    margin: 5vh 5vw;
+    width: 80vw;
+    height: 75vh;
+    transform-style: preserve-3d;
+    /*background-color: rgb(156, 207, 209);*/
+    overflow: hidden;
+  	
+}
+.cube div {
+    box-sizing: border-box;
+    padding: auto;
+    top: 30%;
+    left: 25%;
+    width: 50%;
+    border: 2px solid black;
+    outline: 2px solid black;
+    position: absolute;
+    overflow: hidden;
+   transition: transform 0.5s ease-in;
+  
+}
+div.content {
+    height: 100vh;
+    background-color: grey;
+    float: left;
+    position: absolute;
+    transform-origin: 50% 64vmin;
+  	text-align:left;
+  	padding: 1em;
+    /*transition: transform 0.5s ease-in;*/
+}
+div.top {
+    
+    background-color: grey;
+    float: left;
+  display: block;
+    transform-origin: center;
+  	text-align:left;
+  	font-size: 2em;
+}
+
+        </style>
+    </head>
+    <body>
+        <h1>Welcome to BoxLand!</h1>
+        <div class=perspective>
+            <div class="cube">
+                <div class="top">brucebenjam.in</div>
+                <div class="content">gaming</div>
+                <div class="content">2</div>
+                <div class="content">3</div>
+              <div class="content"><a href="https://e621.net/" target="_blank">google</a></div>	
+            </div>
+        </div>
+        <div class="sliderDiv">
+            <input type="range" min="0" max="360" class="slider" id="rotateSlider">
+        </div>
+        <script>
+        	let slider = document.getElementById("rotateSlider");
+let sliderVal = null;
+slider.oninput = ()=>{rotater(parseInt(slider.value));};
+rotater(180);
+function rotater(value) {
+    console.log(slider.value);
+    sliderVal = value;
+    let top = document.getElementsByClassName("top")[0];
+    let width = document.getElementsByClassName("cube")[0].scrollWidth/2;
+    for(let i = 0; i < 360; i += 90){
+        let content = document.getElementsByClassName("content")[i/90];
+        let adjustedDeg = (value + i)%360;
+        console.log(adjustedDeg);
+        let translateDist = Math.sin((adjustedDeg*Math.PI)/180) * 50;
+        let ZtransDist = Math.cos((adjustedDeg*Math.PI)/180) * 50;
+        
+        if(adjustedDeg > 270 || adjustedDeg < 90){
+            content.style.display = "none";
+        }
+        else{
+            content.style.display = "";
+        }
+        
+        
+        content.style.transform = `rotateX(-15deg) translateZ(${-((ZtransDist - 50)/100) * width}px) translateX(${translateDist}%) rotateY(${180-adjustedDeg}deg)`;
+    }
+    console.log(top);
+    top.style.height = width + "px";
+    top.style.transform = ` rotateX(90deg) rotateX(-15deg) rotateY(180deg) translateY(${-320  - width/100}%) translateZ(${((50)/100)*width}px)  rotateZ(${-value}deg)`;
+     
+}
+window.addEventListener("resize", ()=>{
+    console.log("RESIZING")
+    let width = document.getElementsByClassName("cube")[0].scrollWidth/2;
+    console.log(width);
+    let top = document.getElementsByClassName("top")[0];
+    for(let i = 0; i < 360; i+=90 ){
+        let content = document.getElementsByClassName("content")[i/90];
+        let adjustedVal = (sliderVal + i)%360;
+        let ZtransDist = Math.cos((adjustedVal*Math.PI)/180) * 50;
+        let translateDist = Math.sin((adjustedVal*Math.PI)/180) * 50;
+        content.style.transform = `rotateX(-15deg) translateZ(${-((ZtransDist - 50)/100) * width}px) translateX(${translateDist}%) rotateY(${180-adjustedVal}deg)`;
+        }
+        top.style.height = width + "px";
+        top.style.transform = ` rotateX(90deg) rotateX(-15deg) rotateY(180deg) translateY(${-320  - width/150}%) translateZ(${((50)/100)*width}px)  rotateZ(${-(sliderVal)%360}deg)`;
+    });
+        </script>
+    </body>
+</html>
