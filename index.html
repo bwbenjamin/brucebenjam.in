@@ -2,69 +2,37 @@
 <html>
     <head>
         <meta charset="UTF-8">
-     
+  
     </head>
     <body>
         <h1>Welcome to BoxLand!</h1>
         <div class=perspective>
             <div class="cube">
-                <div class="top">brucebenjam.in</div>
-                <div class="content">gaming</div>
-                <div class="content">2</div>
-                <div class="content">3</div>
-              <div class="content"><a href="https://e621.net/" target="_blank">google</a></div>	
+                <div class="cube-face back">back</div>
+                <div class="cube-face left">left</div>
+                <div class="cube-face right">right</div>
+                <div class="cube-face top">top</div>
+                <div class="cube-face bottom">bottom</div>
+                <div class="cube-face front">front</div>  
             </div>
         </div>
         <div class="sliderDiv">
             <input type="range" min="0" max="360" class="slider" id="rotateSlider">
         </div>
         <script>
-        	let slider = document.getElementById("rotateSlider");
-let sliderVal = null;
-slider.oninput = ()=>{rotater(parseInt(slider.value));};
-rotater(180);
-function rotater(value) {
-    console.log(slider.value);
-    sliderVal = value;
-    let top = document.getElementsByClassName("top")[0];
-    let width = document.getElementsByClassName("cube")[0].scrollWidth/2;
-    for(let i = 0; i < 360; i += 90){
-        let content = document.getElementsByClassName("content")[i/90];
-        let adjustedDeg = (value + i)%360;
-        console.log(adjustedDeg);
-        let translateDist = Math.sin((adjustedDeg*Math.PI)/180) * 50;
-        let ZtransDist = Math.cos((adjustedDeg*Math.PI)/180) * 50;
-        
-        if(adjustedDeg > 270 || adjustedDeg < 90){
-            content.style.display = "none";
-        }
-        else{
-            content.style.display = "";
-        }
-        
-        
-        content.style.transform = `rotateX(-15deg) translateZ(${-((ZtransDist - 50)/100) * width}px) translateX(${translateDist}%) rotateY(${180-adjustedDeg}deg)`;
-    }
-    console.log(top);
-    top.style.height = width + "px";
-    top.style.transform = ` rotateX(90deg) rotateX(-15deg) rotateY(180deg) translateY(${-320  - width/100}%) translateZ(${((50)/100)*width}px)  rotateZ(${-value}deg)`;
-     
+      let slider = document.getElementById("rotateSlider");
+let cube = document.getElementsByClassName("cube")[0];
+
+slider.oninput = ()=>{rotateCube(slider.value);};
+
+function rotateCube(value){
+    value = value;
+    
+    cube.style.transform = `translateZ(-100px) rotateX(-15deg) rotateY(${value}deg) `;
+
+    console.log(value);
 }
-window.addEventListener("resize", ()=>{
-    console.log("RESIZING")
-    let width = document.getElementsByClassName("cube")[0].scrollWidth/2;
-    console.log(width);
-    let top = document.getElementsByClassName("top")[0];
-    for(let i = 0; i < 360; i+=90 ){
-        let content = document.getElementsByClassName("content")[i/90];
-        let adjustedVal = (sliderVal + i)%360;
-        let ZtransDist = Math.cos((adjustedVal*Math.PI)/180) * 50;
-        let translateDist = Math.sin((adjustedVal*Math.PI)/180) * 50;
-        content.style.transform = `rotateX(-15deg) translateZ(${-((ZtransDist - 50)/100) * width}px) translateX(${translateDist}%) rotateY(${180-adjustedVal}deg)`;
-        }
-        top.style.height = width + "px";
-        top.style.transform = ` rotateX(90deg) rotateX(-15deg) rotateY(180deg) translateY(${-320  - width/150}%) translateZ(${((50)/100)*width}px)  rotateZ(${-(sliderVal)%360}deg)`;
-    });
+
         </script>
     </body>
 </html>
