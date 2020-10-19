@@ -1,64 +1,61 @@
- <meta charset="UTF-8">
-        <style>
+      <style>
           h1 {
     text-align: left;
 }
 h1 {
     text-align: center;
 }
-.perspective {
-    perspective: 0px;
-    perspective-origin: 50vw 50vh;
-    width: 500px;
-    margin: 0 0;
-    font-family: 'Roboto', sans-serif;
-    font-weight: 100;
-    color: #fff;
-    text-align: center;
-    
-}
-.cube {
-    position: relative;
-    
-    margin: 5vh 5vw;
-    width: 80vw;
-    height: 75vh;
-    transform-style: preserve-3d;
-    /*background-color: rgb(156, 207, 209);*/
-    overflow: hidden;
-  	
-}
-.cube div {
+* {
     box-sizing: border-box;
-    padding: auto;
-    top: 30%;
-    left: 25%;
-    width: 50%;
-    border: 2px solid black;
-    outline: 2px solid black;
-    position: absolute;
-    overflow: hidden;
-   transition: transform 0.5s ease-in;
-  
-}
-div.content {
-    height: 100vh;
-    background-color: grey;
-    float: left;
-    position: absolute;
-    transform-origin: 50% 64vmin;
-  	text-align:left;
-  	padding: 1em;
-    /*transition: transform 0.5s ease-in;*/
-}
-div.top {
-    
-    background-color: grey;
-    float: left;
-  display: block;
-    transform-origin: center;
-  	text-align:left;
-  	font-size: 2em;
 }
 
+.perspective {
+    width: 200px;
+    height: 200px;
+    border: 1px solid #CCC;
+    margin: 80px;
+    perspective: 400px;
+  }
+  
+  .cube {
+    width: 200px;
+    height: 200px;
+    position: relative;
+    transform-style: preserve-3d;
+    transform: translateZ(-100px);
+    transition: transform 0s ease-out;
+  }
+  
+  .cube-face {
+    position: absolute;
+    width: 200px;
+    height: 400px;
+    border: 2px solid black;
+    line-height: 200px;
+    font-size: 40px;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+  }
+          .cube-face.top{
+          	height: 200px;
+          }
+          .cube-face.bottom{
+          	height: 200px;
+          }
+  
+  .front  { background: rgba(  0, 0, 255, 0.7); }
+  .right  { background: rgba(0, 255, 0, 0.7); }
+  .back   { background: rgba(255, 0, 0, 0.7); }
+  .left   { background: rgba(0, 255, 255, 0.7); }
+  .top    { background: rgba(255, 0, 255, 0.7); }
+  .bottom { background: rgba(255, 255, 0, 0.7); }
+  
+  .front  { transform: rotateY(  0deg) translateZ(100px); }
+  .right  { transform: rotateY( 90deg) translateZ(100px); }
+  .back   { transform: rotateY(180deg) translateZ(100px); }
+  .left   { transform: rotateY(-90deg) translateZ(100px); }
+  .top    { transform: rotateX( 90deg) translateZ(100px); }
+  .bottom { transform: rotateX(-90deg) translateZ(300px)}
+  
         </style>
