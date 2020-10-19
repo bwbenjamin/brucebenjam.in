@@ -1,4 +1,4 @@
-      <style>
+
           h1 {
     text-align: left;
 }
@@ -57,5 +57,3 @@ h1 {
   .left   { transform: rotateY(-90deg) translateZ(100px); }
   .top    { transform: rotateX( 90deg) translateZ(100px); }
   .bottom { transform: rotateX(-90deg) translateZ(300px)}
-  
-        </style>
