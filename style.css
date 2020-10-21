@@ -185,7 +185,7 @@
         }
 
    .cube div.top    { background-color: var(--color-top);}
-   .cube div.bottom { background-color: rgba(255, 255, 0, 1); }
+   .cube div.bottom { background-color: var(--color-shadow); }
     
    .cube div.front  { transform: rotateY(  0deg) translateZ(var(--cube-half-width)); }
    .cube div.right  { transform: rotateY( 90deg) translateZ(var(--cube-half-width)); }
