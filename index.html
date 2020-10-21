@@ -4,36 +4,42 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="style.css">
-    </head>
+       </head>
     <body>
-        <h1>Welcome to BoxLand!</h1>
         <div class=perspective>
             <div class="cube">
-                <div class="cube-face back">back</div>
-                <div class="cube-face left">left</div>
-                <div class="cube-face right">right</div>
-                <div class="cube-face top">top</div>
-                <div class="cube-face bottom">bottom</div>
-                <div class="cube-face front">front</div>  
+                <div class="cube-face back inactive">
+                    <h2>about</h2>
+                    <p>This is the about section on the cube. It will also function as a contact page with an email, a linkedin link, and a resume. I might consider separating these sides given the layout of the space. Currently, It serves as placeholder text.</p>
+                    <button class= "to-front right180 back">back</button>
+                </div>
+                <div class="cube-face left inactive">
+                    <h2>archive</h2>
+                    <button class= "to-front left90 left">back</button>
+                </div>
+                <div class="cube-face right inactive">
+                    <h2>portfolio</h2>
+                    <p>this is the portfolio side of the cube, it will contain 2-3 buttons linking to works from the last 2-3 years on a seperate page. there will be a back button and an archive button below, with the archive button linking to another page.</p>
+                    <button class="to-front right90 right">back</button>
+                    <button class="to-left right180 right">archive</button>
+                </div>
+                <div class="cube-face top">
+                    <h2></h2>
+                </div>
+                <div class="cube-face bottom">
+                    <h2>bottom</h2>
+                </div>
+                <div class="cube-face front active">
+                  	<h1 class="title" id="brucebenjam">brucebenjam.in</h1>
+                  <ul>
+                    <li>  <button class= "to-right left90 front">portfolio</button></li>
+                     <li>  <button class= "to-back left180 front">about</button> </li>
+                    <li> <button class="to-left right90 front">archive</button><li>
+                  </ul>
+                  	
+                 
+                </div>  
             </div>
-        </div>
-        <div class="sliderDiv">
-            <input type="range" min="0" max="360" class="slider" id="rotateSlider">
-        </div>
-        <script>
-      let slider = document.getElementById("rotateSlider");
-let cube = document.getElementsByClassName("cube")[0];
-
-slider.oninput = ()=>{rotateCube(slider.value);};
-
-function rotateCube(value){
-    value = value;
-    
-    cube.style.transform = `translateZ(-100px) rotateX(-15deg) rotateY(${value}deg) `;
-
-    console.log(value);
-}
-
-        </script>
+      </div>
     </body>
 </html>
