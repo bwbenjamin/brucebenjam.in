@@ -1,4 +1,6 @@
-* {
+   
+
+ * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
@@ -8,7 +10,7 @@
   }
   body {
    background: rgb(111,62,7);
-   background: linear-gradient(45deg, rgba(111,62,7,1) 0%, rgba(214,136,25,1) 50%, rgba(238,148,18,1) 100%);
+   background: linear-gradient(45deg, #7B2E12 0%, #AA4019 50%, #D24F1F 100%);
    font-family: 'Poppins', sans-serif;
   height: 100vh;
   width: 100vw;
@@ -16,6 +18,11 @@
   :focus {
       outline: none;
   }
+/*
+**************
+* CUBE STUFF *
+**************
+*/
   .title {
     font-size: 2rem;
     position: absolute;
@@ -30,18 +37,21 @@
          
      
   .perspective {
+      float: left;
       border: none;
       perspective-origin: 50% 50%;
       perspective: 0;
-      width: 100%;
+      width: 32rem;
       height: 100%;
-      margin: 0 auto;
       overflow: hidden;
     }
-    .perspective ul{
+    .cube .toc{
         list-style:none;
-          padding: 1em;
-          }
+        padding: 1em;
+    }
+    .cube .toc button {
+        margin: 1rem;
+    }
     .cube {
       --cube-negative-half-width: -10rem;
       --cube-half-width: 10rem;
@@ -51,21 +61,21 @@
       position: relative;
       transform-style: preserve-3d;
       transform: translateZ(var(--cube-negative-half-width));
+      transform: translateZ(var(--cube-negative-half-width)) rotateX(-35) rotateY(25) rotateZ(0);
       transition: transform 1s ease-out;
       left: 5rem;
       top: 7rem;
-      --color-top: rgb(242,165,55);
-      --color-shadow: rgb(111,62,7);
-      --color-front: rgb(238,148,18);
-      --font-color-front: rgb(255,240,195);
-      --font-color-shadow: rgb(100,95,50);
+      --color-top: #AA4019;
+      --color-shadow: #7B2E12;
+      --color-front: #D24F1F;
+      --font-color-front: #F9D9C0;
+      --font-color-shadow: rgb(100,95,50,0);
       
     }
     .cube-face {
       position: absolute;
       width: var(--cube-width);
       height: var(--cube-width);
-      border: none;
       text-align: left;
       transition: background-color 1s ease-out;
       margin-top: 1em;
@@ -77,29 +87,35 @@
       margin-left: .5em;
       
     }
-    .cube ul{
+    .cube .toc{
         list-style:none;
-          padding-top: 2rem;
+        padding-top: 2rem;
           
-          }
+    }
+    .cube .years {
+        list-style: none;
+    }
     .cube h2{
-            font-size: 1.75rem;
+           font-size: 1.75rem;
           font-weight: 700;
-          padding: 1rem;
+          margin: 1rem;
     }
     .cube p{
             font-size: .85rem;
           font-weight: 400;
-          padding: 1rem;
+          margin: 1rem;
     }
-    .cube *.inactive {
+    .cube .inactive {
         pointer-events: none;
         background-color: var(--color-shadow);
         color: var(--font-color-shadow);
+       
     }
-    .cube *.active {
+    .cube .active {
         background-color: var(--color-front);
         color: var(--font-color-front);
+        
+      	
     }
     .cube-face button{
       background-color: transparent;
@@ -108,19 +124,27 @@
       font-weight: 200;
       font-family: inherit;
       color: inherit;
-      padding: 1rem;
+      
+      -webkit-touch-callout: none; /* iOS Safari */
+      -webkit-user-select: none; /* Safari */
+      -khtml-user-select: none; /* Konqueror HTML */
+      -moz-user-select: none; /* Old versions of Firefox */
+      -ms-user-select: none; /* Internet Explorer/Edge */
+      user-select: none; /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
       
     }
-    .cube-face button:hover{
 
-     transition: transform 0.5s;
-     transition: text-shadow 0.5s;
-     transform: perspective(150px) translateZ(20px);
-     text-shadow: -5px -5px 1px var(--color-shadow);
+    .cube-face button:hover{
+     transition: transform 0.1s, text-shadow 0.1s;
+     transform: perspective(50rem) translateZ(5rem);
+     text-shadow: -0.6rem -0.6rem 1px var(--color-shadow);
     }
+        
     .cube-face button:active {
-        transform: translateZ(-2rem);
+        transform: perspective(50rem) translateZ(2rem);
+        text-shadow: -0.2rem -0.2rem 0px var(--color-shadow);
     }
+        
           @keyframes dark-dark-light {
               0% {
                   background-color: var(--color-shadow);
@@ -184,8 +208,9 @@
             }
         }
 
-   .cube div.top    { background-color: var(--color-top);}
-   .cube div.bottom { background-color: var(--color-shadow); }
+   .cube div.top    {
+   	 background-color: var(--color-top);}
+   .cube div.bottom { background-color: rgba(255, 255, 0, 1); }
     
    .cube div.front  { transform: rotateY(  0deg) translateZ(var(--cube-half-width)); }
    .cube div.right  { transform: rotateY( 90deg) translateZ(var(--cube-half-width)); }
@@ -193,3 +218,131 @@
    .cube div.left   { transform: rotateY(-90deg) translateZ(var(--cube-half-width)); }
    .cube div.top    { transform: rotateX( 90deg) translateZ(var(--cube-half-width)); }
    .cube div.bottom { transform: rotateX(-90deg) translateZ(var(--cube-half-width)); }
+
+   /*
+*************
+* MORE INFO *
+*************
+*/
+.info-wrapper {
+    float: left;
+    width: 45%;
+    height: 100%;
+    overflow: hidden;
+    
+}
+
+.extra-info {
+    
+    width: 100%;
+    height: 100%;
+    position: relative;
+    animation-duration: 1s;
+    padding-top: 2rem;
+    pointer-events: initial;
+
+}
+.extra-info .button-bar {
+    position: fixed;
+}
+.extra-info .card-holder{
+    width: 100%;
+    height: 80%;
+    margin-top: 10%;
+    
+}
+@media only screen and (max-width: 50rem) {
+    .info-wrapper {
+        position: absolute;
+        margin: 0 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+    }
+    .extra-info{
+        width: 100%;
+        background-color: rgba(100,100,100,.3);;
+    }
+    .extra-info .card-holder {
+        width: 80%;
+        height: 80%;
+        margin: 0 10% 10% 10%;
+    }
+}
+.extra-info .x-button {
+    border: 2px solid black;
+    background-color: rgba(100,100,100,.3);
+    color: #F9D9C0;
+    font-size: 2rem;
+    width: 2em;
+    height: 2em;
+    line-height: 2em;
+    text-align: center;
+}
+.extra-info:not(.active){
+    animation-name: slide-down;
+    display: none;
+}
+.extra-info.active{
+    animation-name: slide-up;
+    display: block;
+}
+::-webkit-scrollbar{
+    background-color: transparent;
+}
+::-webkit-scrollbar-track{
+    background-color: rgba(0,0,0,.2);
+    border-radius: 100px;
+    box-shadow: 0 0 1rem rgba(0,0,0,1) inset;
+}
+::-webkit-scrollbar-thumb{
+    background-color: rgba(255,255,255,0.8);
+    border-radius: 100px;
+    box-shadow: 0 0 1rem rgba(150,150,150,1) inset;
+    
+}
+
+@keyframes slide-up {
+    0%{
+        transform: translateY(200vh);
+    }
+    100%{
+        transform: translateY(0vh);
+    }
+}
+@keyframes slide-away {
+    0%{
+        transform: translateY(0vh);
+    }
+    100%{
+        transform: translateY(-200vh);
+        display: none;
+    }
+}
+
+.card {
+    width: 80%;
+    margin: 0 10%;
+    position: relative;
+    animation-fill-mode: both;
+    animation-timing-function: ease-in;
+    animation-duration: 1s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+.thumbnail{
+    width: 50%;
+    float: left;
+}
+.artwork {
+    
+    width: 80%;
+}
+.card:not(.active) {
+    display: block;
+}
+.card.active {
+    display: block;
+}
