@@ -89,11 +89,12 @@
     }
     .cube .toc{
         list-style:none;
-        padding-top: 2rem;
+        margin-top: 2rem;
           
     }
     .cube .years {
         list-style: none;
+         margin: 1rem;
     }
     .cube h2{
            font-size: 1.75rem;
