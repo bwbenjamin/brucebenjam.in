@@ -7,13 +7,18 @@
   }
   :root {
     font-size: 2.8vmin;
+    --color-top: #AA4019;
+    --color-shadow: #7B2E12;
+    --color-front: #D24F1F;
+    --font-color-front: #F9D9C0;
+    --font-color-shadow: #645f3200;
   }
   body {
-   background: rgb(111,62,7);
-   background: linear-gradient(45deg, #7B2E12 0%, #AA4019 50%, #D24F1F 100%);
-   font-family: 'Poppins', sans-serif;
-  height: 100vh;
-  width: 100vw;
+    background: rgb(111,62,7);
+    background: linear-gradient(45deg, #7B2E12 0%, #AA4019 50%, #D24F1F 100%);
+    font-family: 'Poppins', sans-serif;
+    height: 100vh;
+    width: 100vw;
   }
   :focus {
       outline: none;
@@ -65,11 +70,6 @@
       transition: transform 1s ease-out;
       left: 5rem;
       top: 7rem;
-      --color-top: #AA4019;
-      --color-shadow: #7B2E12;
-      --color-front: #D24F1F;
-      --font-color-front: #F9D9C0;
-      --font-color-shadow: rgb(100,95,50,0);
       
     }
     .cube-face {
@@ -89,12 +89,11 @@
     }
     .cube .toc{
         list-style:none;
-        margin-top: 2rem;
+        padding-top: 2rem;
           
     }
     .cube .years {
         list-style: none;
-         margin: 1rem;
     }
     .cube h2{
            font-size: 1.75rem;
@@ -237,16 +236,28 @@
     
     width: 100%;
     height: 100%;
-    position: relative;
+    position: absolute;
     animation-duration: 1s;
     padding-top: 2rem;
     pointer-events: initial;
 
 }
+.right-content {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: 100%
+}
 .extra-info .button-bar {
     position: fixed;
 }
 .extra-info .card-holder{
+    width: 100%;
+    height: 80%;
+    margin-top: 10%;
+    
+}
+.extra-info .thumbnail-holder{
     width: 100%;
     height: 80%;
     margin-top: 10%;
@@ -271,17 +282,24 @@
     }
 }
 .extra-info .x-button {
-    border: 2px solid black;
-    background-color: rgba(100,100,100,.3);
+    border: none;
+    background-color: transparent;
     color: #F9D9C0;
-    font-size: 2rem;
-    width: 2em;
-    height: 2em;
-    line-height: 2em;
+    font-size: 3rem;
+    width: 3rem;
+    height: 3rem; 
     text-align: center;
+    line-height: 3rem;
 }
+.extra-info .x-button:hover{
+    
+}
+.extra-info .x-button:active {
+    transform: rotateZ(360deg);
+    transition: transform 0.5s ease-out;
+}
+
 .extra-info:not(.active){
-    animation-name: slide-down;
     display: none;
 }
 .extra-info.active{
@@ -320,7 +338,6 @@
         display: none;
     }
 }
-
 .card {
     width: 80%;
     margin: 0 10%;
@@ -331,11 +348,20 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    
 }
-.thumbnail{
-    width: 50%;
-    float: left;
+.thumbnail {
+    width: 40%;
+    margin: 0 5%;
+    position: relative;
+    animation-fill-mode: both;
+    animation-timing-function: ease-in;
+    animation-duration: 1s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.thumbnail-holder{
+    width: 40%;
 }
 .artwork {
     
