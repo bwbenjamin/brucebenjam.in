@@ -6,6 +6,7 @@ let startingZrotation = 0;
 
 //cube element for use in later functions
 let cube = document.getElementsByClassName("cube")[0];
+
 //face elements for use in later functions
 let left = document.getElementsByClassName("left")[0];
 let back = document.getElementsByClassName("back")[0];
@@ -154,19 +155,33 @@ function removeActive(className){
 }
 
 //gives active class to element with specified id. also gives that element a slideshow if it isnt already
-function setActive(id) {
+function setActive(id,isThumb = false) {
     let element = document.getElementById(id)
     element.classList.toggle("active",true);
     if(slideshows[id] !== undefined){
         return;
     }
-    slideshows[id] = addFlickity(
-        document.getElementById(id).querySelectorAll(`.card-holder`)[0],
-        {
-            cellAlign: 'right',
-            lazyLoad: 1,
-        }
-        )
+    if(isThumb){
+        slideshows[id] = addFlickity(
+            document.getElementById(id).querySelectorAll(`.thumbnail-holder`)[0],
+            {
+
+                cellAlign: 'right',
+                lazyLoad: 1,
+            }
+            );
+        //slideshows[id].select(2);
+    }
+    else{
+        slideshows[id] = addFlickity(
+            document.getElementById(id).querySelectorAll(`.card-holder`)[0],
+            {
+                cellAlign: 'right',
+                lazyLoad: 1,
+            }
+            );
+    }
+    
     
 }
 
@@ -227,7 +242,7 @@ for(let i = 0; i < currButtons.length; i++){
         rotateCube(startingXrotation,startingYrotation+90,startingZrotation);
         removeActive("extra-info");
         document.addEventListener("animationend",(e)=>{
-            setActive("archive");
+            setActive("archive",true);
         },{once:true});
         
     });
