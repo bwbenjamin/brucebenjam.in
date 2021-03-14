@@ -50,10 +50,7 @@
       height: 100%;
       overflow: hidden;
     }
-    .cube .toc{
-        list-style:none;
-        padding: 1em;
-    }
+    
     .cube .toc button {
         margin: 1rem;
     }
@@ -125,7 +122,9 @@
       font-weight: 200;
       font-family: inherit;
       color: inherit;
-      
+      padding-left: 2rem;
+      padding-top: 1rem;
+       
       -webkit-touch-callout: none; /* iOS Safari */
       -webkit-user-select: none; /* Safari */
       -khtml-user-select: none; /* Konqueror HTML */
