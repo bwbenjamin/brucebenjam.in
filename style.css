@@ -120,6 +120,7 @@
     .cube-face button{
       background-color: transparent;
       border: none;
+      padding: 1rem;
       font-size: 1.75rem;
       font-weight: 200;
       font-family: inherit;
