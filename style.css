@@ -19,6 +19,8 @@
     font-family: 'Poppins', sans-serif;
     height: 100vh;
     width: 100vw;
+    display: flex;
+    flex-direction: row;
   }
   :focus {
       outline: none;
@@ -28,7 +30,7 @@
 * CUBE STUFF *
 **************
 */
-  .title {
+ .cube-face.front .title {
     font-size: 2rem;
     position: absolute;
     top: -2.2rem;
@@ -46,7 +48,7 @@
       border: none;
       perspective-origin: 50% 50%;
       perspective: 0;
-      width: 32rem;
+      width: max(35%, 32rem);
       height: 100%;
       overflow: hidden;
     }
@@ -86,11 +88,19 @@
     }
     .cube .toc{
         list-style:none;
-        padding-top: 2rem;
+        padding-top: 1rem;
           
     }
+
     .cube .years {
-        list-style: none;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+        align-content: flex-start;
+        height: 60%;
+        max-width: 100%;
+
     }
     .cube h2{
            font-size: 1.75rem;
@@ -117,13 +127,13 @@
     .cube-face button{
       background-color: transparent;
       border: none;
-      padding: 1rem;
+      padding: 0.5rem;
       font-size: 1.75rem;
       font-weight: 200;
       font-family: inherit;
       color: inherit;
       padding-left: 2rem;
-      padding-top: 1rem;
+      padding-top: 0.5rem;
        
       -webkit-touch-callout: none; /* iOS Safari */
       -webkit-user-select: none; /* Safari */
@@ -225,32 +235,32 @@
 *************
 */
 .info-wrapper {
-    float: left;
-    width: 45%;
+    float: right;
+    width: calc(100% - max(40%, 32rem));
     height: 100%;
-    overflow: hidden;
     
 }
 
 .extra-info {
     
     width: 100%;
-    height: 100%;
-    position: absolute;
-    animation-duration: 1s;
-    padding-top: 2rem;
-    pointer-events: initial;
+    /*position: absolute;*/
+    animation-duration: 0.5s;
+    
 
 }
+
 .right-content {
     position: relative;
-    overflow: hidden;
     width: 100%;
-    height: 100%
+    height: 100%;
+    overflow-y: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
 }
-.extra-info .button-bar {
-    position: fixed;
-}
+
 .extra-info .card-holder{
     width: 100%;
     height: 80%;
@@ -263,23 +273,36 @@
     margin-top: 10%;
     
 }
-@media only screen and (max-width: 50rem) {
+
+@media only screen and (max-aspect-ratio: 12/7) {
+    
     .info-wrapper {
         position: absolute;
         margin: 0 0;
         width: 100%;
         height: 100%;
         pointer-events: none;
+        
+    }
+    .right-content{
+        pointer-events: inherit;
     }
     .extra-info{
         width: 100%;
-        background-color: rgba(100,100,100,.3);;
+        pointer-events: none;
+        background-color:rgba(100,100,100,0.3);
+     
+    }
+    .extra-info.active{
+        pointer-events: initial;
     }
     .extra-info .card-holder {
         width: 80%;
         height: 80%;
         margin: 0 10% 10% 10%;
     }
+    
+
 }
 .extra-info .x-button {
     border: none;
@@ -287,16 +310,22 @@
     color: #F9D9C0;
     font-size: 3rem;
     width: 3rem;
-    height: 3rem; 
+    height: 3rem;
     text-align: center;
     line-height: 3rem;
 }
-.extra-info .x-button:hover{
-    
+
+.button-bar{
+    margin-top: auto;
 }
-.extra-info .x-button:active {
+
+.extra-info .x-button:hover {
     transform: rotateZ(360deg);
-    transition: transform 0.5s ease-out;
+    transition: transform 0.3s ease-out;
+}
+.extra-info .x-button:active{
+    transform: scale(0.8);
+    transition: transform 0.15s ease-out;
 }
 
 .extra-info:not(.active){
@@ -304,7 +333,7 @@
 }
 .extra-info.active{
     animation-name: slide-up;
-    display: block;
+    display: flex;
 }
 ::-webkit-scrollbar{
     background-color: transparent;
@@ -372,4 +401,135 @@
 }
 .card.active {
     display: block;
+}
+
+.wrapper{
+    position: relative;
+    height: 100%;
+    flex-direction: column;
+    justify-content: center;
+}
+
+
+.carousel-bg{
+    position: relative;
+    display: flex;
+    height: 70%;
+    flex-direction: column;
+    justify-content: center;
+    
+
+}
+
+.moving-parts{
+    height: calc(100% - 60px);
+    display: flex;
+    flex-direction: row;
+    color: var(--font-color-front);
+    overflow: hidden;
+}
+.titles{
+    display: flex;
+    flex-direction: column;
+    width: 20%;
+    margin-right: 0.5rem;
+    
+    
+
+}
+.titles .title{
+    font-size: 0.75rem;
+    font-weight: 200;
+    text-align: right;
+    white-space: nowrap;
+    position: relative;
+    width: calc(1000%);
+    transform: translateX(-90%);
+    z-index: 1000;
+
+
+}
+.title.bold{
+    font-weight: 400;
+}
+
+.carousel{
+    /* height: 100%; */
+    width: 80%;
+    position: relative; /*importatnt*/
+    transition: transform 0.3s, bottom 0s;
+    
+}
+.slide {
+    display: flex;
+    /*
+    align-items: stretch;
+    justify-content: space-around;
+    */
+    height: 100%;
+    width: 100%;
+    margin-bottom: 30px;
+}
+/*
+.content{
+    display: flex;
+    height: 100%;
+    align-items: stretch;
+    justify-content: space-around;
+
+}
+*/
+
+/*selects for text paragraph div*/
+.slide div:not(.img){ /*used to be "content" is not slide*/
+    flex-grow: 1;
+    max-width: 38%;
+    margin: 0 0.5em 30px 0.5rem;
+    font-size: 0.75rem;
+    line-height: 1rem;
+    font-weight: 200;
+}
+
+.slide .img{ /*used to be "content" is not slide*/
+    flex-grow: 2;
+    max-width: 62%;
+    height: 100%;
+}
+
+.img img{
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    border: 4px solid var(--font-color-front);
+    background-color: var(--font-color-front);
+    -ms-user-select: none; 
+    user-select: none;
+}
+/*ADD "transparent" class to non rectangular images" */
+.img img.transparent{
+    background-color: transparent;
+}   
+
+.button{
+    z-index: 10000;
+    
+    position: relative;
+    /*
+    border-radius: 50%;
+    */
+    width: 30px;
+    height: 30px;
+    /*padding-top: 5%; /*use this for responsive button size*/
+    background-color: transparent;
+    margin-left: calc(42.5%);
+    text-align: center;
+    -ms-user-select: none; 
+    user-select: none;
+    
+}
+
+.button.next{
+    transform: rotateZ(180deg);
+    order: 4;
+    position: relative;
 }

@@ -11,7 +11,11 @@
             <div class="cube">
                 <div class="cube-face back inactive">
                     <h2>about</h2>
-                    <p>This is the about section on the cube. It will also function as a contact page with an email, a linkedin link, and a resume. I might consider separating these sides given the layout of the space. Currently, It serves as placeholder text.</p>
+                    <p>This is the about section on the cube. 
+                        It will also function as a contact page with an email, 
+                        a linkedin link, and a resume. 
+                        I might consider separating these sides given the layout of the space. 
+                        Currently, It serves as placeholder text.</p>
                     <button class= "to-front right180 back">back</button>
                 </div>
                 <div class="cube-face left inactive">
@@ -20,11 +24,18 @@
                 </div>
                 <div class="cube-face right inactive">
                     <h2>portfolio</h2>
-                    <ul class="years">
-                        <li><button class="info-button 2020">2020</button></li>
-                        <li><button class="info-button 2019">2019</button></li>
-                        <li><button class="info-button 2018">2018</button></li>
-                    </ul>
+                    <div class="years">
+                        <!--leftmost three years-->
+                        <button class="info-button 2021">2021</button>
+                        <button class="info-button 2020">2020</button>
+                        <button class="info-button 2019">2019</button>
+                        <!--middle three years-->
+
+                        <!--rightmost three years-->
+                        
+                        
+                        
+                    </div>
                     <button class="to-front right90 right">back</button>
                     <button class="to-left right180 right">archive</button>
                  
@@ -47,24 +58,81 @@
         </div>
         <div class="info-wrapper">
         <div class = "right-content">
-            <div class="extra-info portfolio-info" id="2020">
-                <div class="button-bar">
-                    <button class="x-button">&times;</button>
+            <div class="extra-info portfolio-info wrapper" id="2020">
+                <div class="carousel-bg">
+                    <svg class="button prev" onclick="prev('c1')" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 54.63 41.64"><defs><style>.cls-1{fill:none;stroke:#f9d9c0;stroke-width:18px;}</style></defs><g id="Layer_2" data-name="Layer 2"><g id="Layer_1-2" data-name="Layer 1"><polyline class="cls-1" points="6.59 35.51 27.32 13.22 48.04 35.51"/></g></g></svg>
+                    <div class="moving-parts">
+                        <div class="titles">
+                            <h2 class= "title" title="title1 peepeepoopoo">title1 peepeepoopoo</h2>
+                            <h2 class= "title">title2</h2>
+                            <h2 class= "title">title3</h2>
+                            <h2 class= "title">title4</h2>
+                            <div class="button-bar">
+                                <button class="x-button">&times;</button>
+                            </div>
+                        </div>
+                        <div class="carousel" id='c1'>
+                            <div class="slide">
+                                <div class='img'>
+                                    <img src="img/senior-project.png">
+                                </div>
+                                <div>
+                                    <h2>Project X</h2>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
+                                        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                                         Pulvinar sapien et ligula ullamcorper malesuada proin. 
+                                         Risus at ultrices mi tempus imperdiet nulla malesuada pellentesque elit. 
+                                         Convallis posuere morbi leo urna molestie at elementum. 
+                                         Sit amet consectetur adipiscing elit pellentesque habitant morbi tristique senectus.</p>
+                                </div>
+                            </div>
+                            <div class="slide">
+                                <div class='img'>
+                                    <img src="img/339-coffee.png">
+                                </div>
+                                <div>
+                                    <h2>Project X</h2>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
+                                        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                                         Pulvinar sapien et ligula ullamcorper malesuada proin. 
+                                         Risus at ultrices mi tempus imperdiet nulla malesuada pellentesque elit. 
+                                         Convallis posuere morbi leo urna molestie at elementum. 
+                                         Sit amet consectetur adipiscing elit pellentesque habitant morbi tristique senectus.</p>
+                                </div>
+                            </div>
+                            <div class="slide">
+                                <div class='img'>
+                                    <img src="img/337-lxv.png">
+                                </div>
+                                <div>
+                                    <h2>Project X</h2>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
+                                        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                                         Pulvinar sapien et ligula ullamcorper malesuada proin. 
+                                         Risus at ultrices mi tempus imperdiet nulla malesuada pellentesque elit. 
+                                         Convallis posuere morbi leo urna molestie at elementum. 
+                                         Sit amet consectetur adipiscing elit pellentesque habitant morbi tristique senectus.</p>
+                                </div>
+                            </div>
+                            <div class="slide">
+                                <div class='img'>
+                                    <img src="img/329-bread.png">
+                                </div>
+                                <div>
+                                    <h2>Project X</h2>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
+                                        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                                         Pulvinar sapien et ligula ullamcorper malesuada proin. 
+                                         Risus at ultrices mi tempus imperdiet nulla malesuada pellentesque elit. 
+                                         Convallis posuere morbi leo urna molestie at elementum. 
+                                         Sit amet consectetur adipiscing elit pellentesque habitant morbi tristique senectus.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <svg class="button next" onclick="next('c1')" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 54.63 41.64"><defs><style>.cls-1{fill:none;stroke:#f9d9c0;stroke-width:18px;}</style></defs><g id="Layer_2" data-name="Layer 2"><g id="Layer_1-2" data-name="Layer 1"><polyline class="cls-1" points="6.59 35.51 27.32 13.22 48.04 35.51"/></g></g></svg>
                 </div>
-                <div class="card-holder">
-                    <div class="card">
-                        <h2 class="card-header">title</h2>
-                        <img class="artwork" data-flickity-lazyload="img/N1iZ0.png" alt="imageBrokeXD"/>
-                    </div>
-                    <div class="card">
-                        <h2 class="card-header">title</h2>
-                        <img class="artwork" data-flickity-lazyload="img/frens.PNG" alt="imageBrokeXD"/>
-                    </div>
-                    <div class="card">
-                        <h2 class="card-header">title</h2>
-                        <img class="artwork" data-flickity-lazyload="img/tarmobot.png" alt="imageBrokeXD"/>
-                    </div>
-                </div>
+                
             </div>
 
             <div class=" extra-info portfolio-info" id="2019">
@@ -142,5 +210,6 @@
         </div>
         <script src="flickity.js"></script>
         <script src="render.js"></script>
+        <script src="slide.js"></script>
     </body>
 </html>

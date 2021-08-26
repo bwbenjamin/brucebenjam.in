@@ -148,16 +148,24 @@ let slideshows = {}
 function removeActive(className){
     let elements = document.getElementsByClassName(className);
     for(let i = 0; i < elements.length; i++){
-        console.log(elements[i].classList)
-        elements[i].classList.toggle("active",false);
+        if(elements[i].classList.contains('active')){
+            elements[i].style.animationName = 'slide-away';
+            elements[i].addEventListener('animationend',()=>{
+                elements[i].style.animationName = '';
+                elements[i].classList.remove('active');
+            }, {once: true});
+            return true;
+        }
+        
         
     }
+    return false;
 }
 
 //gives active class to element with specified id. also gives that element a slideshow if it isnt already
 function setActive(id,isThumb = false) {
-    let element = document.getElementById(id)
-    element.classList.toggle("active",true);
+    let element = document.getElementById(id);
+    element.classList.add("active");
     if(slideshows[id] !== undefined){
         return;
     }
@@ -198,12 +206,22 @@ function connectButtons(buttonClass){
     for(let i = 0; i < buttons.length; i++){
         let id = buttons[i].classList[1];
         if(id === undefined || id === null){
-            console.log("buttons configured correctly");
+            console.log("buttons configured incorrectly");
             return;
         }
         document.getElementsByClassName(id)[0].addEventListener("click",(e)=>{
-            removeActive("extra-info");
-            setActive(id);
+            if(document.getElementById(id).classList.contains('active')){
+                return;
+            }
+            if(removeActive("extra-info")){
+                document.addEventListener('animationend',(e)=>{
+                    setActive(id);
+                },{once:true});
+            }
+            else{
+                setActive(id);
+            }
+            
         });
     }
 }
