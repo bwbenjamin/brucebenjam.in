@@ -304,6 +304,11 @@
     
 
 }
+@media only screen and (hover: none), (pointer: course){
+    .extra-info{
+        background-color: red;
+    }
+}
 .extra-info .x-button {
     border: none;
     background-color: transparent;

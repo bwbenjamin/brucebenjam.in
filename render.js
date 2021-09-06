@@ -165,6 +165,10 @@ function removeActive(className){
 //gives active class to element with specified id. also gives that element a slideshow if it isnt already
 function setActive(id,isThumb = false) {
     let element = document.getElementById(id);
+    if(!element){
+        console.error(`info page[${id}] has not beed set up yet!`);
+        return;
+    }
     element.classList.add("active");
     if(slideshows[id] !== undefined){
         return;
