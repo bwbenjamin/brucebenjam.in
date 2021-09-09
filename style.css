@@ -47,7 +47,7 @@
       float: left;
       border: none;
       perspective-origin: 50% 50%;
-      perspective: 0;
+      perspective: 1;
       width: max(35%, 32rem);
       height: 100%;
       overflow: hidden;
