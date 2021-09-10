@@ -95,9 +95,9 @@
     .cube .years {
         display: flex;
         flex-direction: column;
+        align-content: flex-start;
         justify-content: flex-start;
         flex-wrap: wrap;
-        align-content: flex-start;
         height: 60%;
         max-width: 100%;
 
@@ -298,10 +298,13 @@
     }
     .extra-info .card-holder {
         width: 80%;
-        height: 80%;
+        height: 0%;
         margin: 0 10% 10% 10%;
     }
-    
+    .moving-parts{
+    -ms-transform: translateY(5%);
+  transform: translateY(5%);
+}
 
 }
 @media only screen and (hover: none), (pointer: course){
@@ -316,7 +319,7 @@
     font-size: 3rem;
     width: 3rem;
     height: 3rem;
-    text-align: center;
+    text-align: left;
     line-height: 3rem;
 }
 
@@ -427,18 +430,19 @@
 }
 
 .moving-parts{
-    height: calc(100% - 60px);
+    height: calc(100% - 30px);
     display: flex;
     flex-direction: row;
     color: var(--font-color-front);
     overflow: hidden;
+    
+
 }
 .titles{
     display: flex;
     flex-direction: column;
     width: 20%;
     margin-right: 0.5rem;
-    
     
 
 }
@@ -467,6 +471,7 @@
 }
 .slide {
     display: flex;
+    
     /*
     align-items: stretch;
     justify-content: space-around;
@@ -489,14 +494,19 @@
 .slide div:not(.img){ /*used to be "content" is not slide*/
     flex-grow: 1;
     max-width: 38%;
-    margin: 0 0.5em 30px 0.5rem;
+    margin: 0 3em 30px 0.5rem;
     font-size: 0.75rem;
     line-height: 1rem;
     font-weight: 200;
 }
+.slide p{
+    margin-top: 2em;
+    font-size: 0.65rem;\
+    hyphens: auto;
+}
 
 .slide .img{ /*used to be "content" is not slide*/
-    flex-grow: 2;
+    flex-grow: .5;
     max-width: 62%;
     height: 100%;
 }
@@ -504,11 +514,12 @@
 .img img{
     max-width: 100%;
     max-height: 100%;
-    object-fit: contain;
+    object-fit: fill;
     border: 4px solid var(--font-color-front);
     background-color: var(--font-color-front);
     -ms-user-select: none; 
     user-select: none;
+    
 }
 /*ADD "transparent" class to non rectangular images" */
 .img img.transparent{
@@ -524,10 +535,10 @@
     */
     width: 30px;
     height: 30px;
-    /*padding-top: 5%; /*use this for responsive button size*/
+    padding-top: .5%; /*use this for responsive button size*/
     background-color: transparent;
     margin-left: calc(42.5%);
-    text-align: center;
+    text-align: left;
     -ms-user-select: none; 
     user-select: none;
     
