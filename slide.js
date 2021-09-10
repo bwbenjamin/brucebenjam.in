@@ -110,5 +110,3 @@ function prev(carouselName){
     }
     titles[c.itemNumber].classList.add('bold');
 }
-
-getCarousel('c1');

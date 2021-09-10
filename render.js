@@ -170,31 +170,9 @@ function setActive(id,isThumb = false) {
         return;
     }
     element.classList.add("active");
-    if(slideshows[id] !== undefined){
-        return;
-    }
-    if(isThumb){
-        slideshows[id] = addFlickity(
-            document.getElementById(id).querySelectorAll(`.thumbnail-holder`)[0],
-            {
-
-                cellAlign: 'right',
-                lazyLoad: 1,
-            }
-            );
-        //slideshows[id].select(2);
-    }
-    else{
-        slideshows[id] = addFlickity(
-            document.getElementById(id).querySelectorAll(`.card-holder`)[0],
-            {
-                cellAlign: 'right',
-                lazyLoad: 1,
-            }
-            );
-    }
-    
-    
+    let c = element.getElementsByClassName('carousel')[0];
+    getCarousel(c.id);
+    return;
 }
 
 //gives the x buttons functions
