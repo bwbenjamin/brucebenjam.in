@@ -451,6 +451,10 @@
     
 
 }
+a {
+  text-decoration: inherit;
+  color: inherit;
+}
 .titles .title{
     font-size: 0.75rem;
     font-weight: 200;
