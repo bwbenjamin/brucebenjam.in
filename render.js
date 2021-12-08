@@ -131,8 +131,6 @@ for(let i = 0; i < currButtons.length; i++){
         },{once:true});
     });
 }
-//an object that can be used to get the Flickity object with an elements id.
-let slideshows = {}
 
 //removes the active class from all elements with the classname
 function removeActive(className){
