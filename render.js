@@ -55,7 +55,7 @@ for(let i = 0; i < currButtons.length; i++){
         let back = document.getElementsByClassName(getLeftFace(getLeftFace(origin)))[0];
         let front = document.getElementsByClassName(origin)[0];
         front.classList.replace("active","inactive");
-        console.log(back);
+        //console.log(back);
 
         front.style.animationName = `light-dark-dark`;
         left.style.animationName = `dark-light-dark`;
@@ -96,7 +96,7 @@ for(let i = 0; i < currButtons.length; i++){
             right.style.animationName = "";
             
             right.classList.replace("inactive","active");
-            console.log(right);
+            //console.log(right);
         },{once:true});
     });
 }
@@ -111,7 +111,7 @@ for(let i = 0; i < currButtons.length; i++){
         let front = document.getElementsByClassName(origin)[0];
         front.classList.replace("active","inactive");
         back.style.backgroundColor = "var(--color-front)";
-        console.log(back);
+        //console.log(back);
 
         front.style.animationName = `light-dark-dark`;
         right.style.animationName = `dark-light-dark`;
@@ -131,16 +131,6 @@ for(let i = 0; i < currButtons.length; i++){
         },{once:true});
     });
 }
-
-//turns the elenent into a flickity slideshow
-function addFlickity(element,options){
-    if(element == null || element == undefined){
-        return null;
-    }
-    return new Flickity(element,options);
-}
-
-
 //an object that can be used to get the Flickity object with an elements id.
 let slideshows = {}
 
@@ -207,10 +197,8 @@ function connectButtons(buttonClass){
         });
     }
 }
-
-connectButtons("info-button");
-
-//configures portfolio buttons
+connectButtons("info-button")
+//onfigures portfolio buttons
 currButtons = document.getElementsByClassName("to-right");
 for(let i = 0; i < currButtons.length; i++){
     currButtons[i].addEventListener("click", (e)=>{
@@ -235,16 +223,12 @@ for(let i = 0; i < currButtons.length; i++){
         
     });
 }
-//configures archive buttons
+//configures contact buttons
 currButtons = document.getElementsByClassName("to-left");
 for(let i = 0; i < currButtons.length; i++){
     currButtons[i].addEventListener("click", (e)=>{
         rotateCube(startingXrotation,startingYrotation+90,startingZrotation);
         removeActive("extra-info");
-        document.addEventListener("animationend",(e)=>{
-            setActive("archive",true);
-        },{once:true});
-        
     });
 }
 //rotates the cube x,y,z deg
