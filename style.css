@@ -597,6 +597,16 @@ a {
     position: relative;
     transition: transform .3s ease-out;
 }
+
 .button.next:hover {
     transform: rotateZ(180deg) scale(1.2);
+}
+
+.about-info{
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+}
+.about-info .x-button {
+    margin-bottom: 10%;
 }

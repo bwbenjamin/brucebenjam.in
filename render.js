@@ -159,7 +159,12 @@ function setActive(id,isThumb = false) {
     }
     element.classList.add("active");
     let c = element.getElementsByClassName('carousel')[0];
-    getCarousel(c.id);
+    if(c){
+        getCarousel(c.id);
+    }
+    else{
+        
+    }
     return;
 }
 
@@ -195,7 +200,25 @@ function connectButtons(buttonClass){
         });
     }
 }
-connectButtons("info-button")
+connectButtons("info-button");
+
+//set up about button
+{
+    let abt = document.getElementsByClassName("to-back");
+    for(let i = 0; i < abt.length; ++i){
+        abt[i].addEventListener("click",(e)=>{
+            console.log("pong");
+            window.addEventListener("animationend",(e)=>{
+                console.log("pingo");
+                setActive("about");
+            },{once: true})
+        });
+    }
+    
+}
+
+
+
 //onfigures portfolio buttons
 currButtons = document.getElementsByClassName("to-right");
 for(let i = 0; i < currButtons.length; i++){
