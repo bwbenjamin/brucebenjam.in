@@ -57,7 +57,7 @@ function getCarousel(carouselName){
             obj.carousel.style.bottom = '0'
         });
         obj.titles[0].classList.add('bold');
-        console.log(obj);
+        //console.log(obj);
         carousels[carouselName] = obj;
         centerSlideStuff(carousel.parentElement.parentElement);
         return obj;
