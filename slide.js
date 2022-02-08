@@ -1,7 +1,27 @@
+function centerSlideStuff(wrapper){
+    let r = wrapper.getElementsByClassName('img')[0].getBoundingClientRect();
+    let buttons = wrapper.getElementsByClassName("button");
+    for(let buttonElement of buttons){
+        buttonElement.style.left =  `${
+            Math.floor((r.right - r.left)/2)
+        }px`;
+    }
+    let captions = wrapper.getElementsByClassName("caption");
+    for(let caption of captions){
+        caption.style.maxWidth = `${r.width}px`;
+    }
+    
+}
+
+for (let e of document.getElementsByClassName('carousel-bg')){
+    window.addEventListener("resize", ()=>{
+        centerSlideStuff(e);
+    });
+}
+
+
 
 let carousels = {};
-
-let phantomSlides = {};
 
 function clickTitleHandler(carouselName, titleNumber){
     let c = getCarousel(carouselName);
@@ -11,6 +31,7 @@ function clickTitleHandler(carouselName, titleNumber){
     while(c.itemNumber < titleNumber){
         next(carouselName);
     }
+
 }
 
 function getCarousel(carouselName){
@@ -38,6 +59,7 @@ function getCarousel(carouselName){
         obj.titles[0].classList.add('bold');
         console.log(obj);
         carousels[carouselName] = obj;
+        centerSlideStuff(carousel.parentElement.parentElement);
         return obj;
         
     }
