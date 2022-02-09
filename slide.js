@@ -35,6 +35,8 @@ function clickTitleHandler(carouselName, titleNumber){
 }
 
 function getCarousel(carouselName){
+    let is_mobile = getComputedStyle(document.querySelector(":root"))
+        .getPropertyValue("--is-mobile") === 'true';
     let c = carousels[carouselName];
     if(!c){
         let carousel = document.getElementById(carouselName);
@@ -53,8 +55,9 @@ function getCarousel(carouselName){
         };
         obj.carousel.addEventListener("transitionend", ()=>{
             obj.carousel.style.transitionDuration = '0s';
-            obj.carousel.style.transform = 'translateY(0)';
-            obj.carousel.style.bottom = '0'
+            obj.carousel.style.transform = `translate${is_mobile ? 'X' : 'Y'}(0)`;
+            obj.carousel.style.bottom = '0';
+            obj.carousel.style.right = '0';
         });
         obj.titles[0].classList.add('bold');
         //console.log(obj);
@@ -77,6 +80,10 @@ function mod(a,b){
     }
 }
 function next(carouselName){
+    let is_mobile = getComputedStyle(document.querySelector(":root"))
+        .getPropertyValue("--is-mobile") == "true";
+    console.log(is_mobile, "true",getComputedStyle(document.querySelector(":root"))
+    .getPropertyValue("--is-mobile") );
     let c = getCarousel(carouselName);
     if(!c){
         console.error(`${carouselName} is not the id of any carousel wrapper :(`);
@@ -87,9 +94,9 @@ function next(carouselName){
     let s = slides[mod(c.backlog,slides.length)];
     parent.append(s.cloneNode(true));
     c.itemNumber = mod(c.itemNumber + 1, c.length);
-    c.carousel.style.transition = 'transform 0.3s, bottom 0s';
+    c.carousel.style.transition = 'transform 0.3s';
     c.backlog += 1;
-    c.carousel.style.transform = `translateY(calc(${-c.backlog * 100}% + ${-c.backlog * 30}px)`;
+    c.carousel.style.transform = `translate${is_mobile ? 'X' : 'Y'}(calc(${-c.backlog * 100}% + ${-c.backlog * 30}px)`;
     c.carousel.addEventListener("transitionend", ()=>{
         s.remove();
         c.backlog -= 1;
@@ -105,6 +112,8 @@ function next(carouselName){
 }
 
 function prev(carouselName){
+    let is_mobile = getComputedStyle(document.querySelector(":root"))
+        .getPropertyValue("--is-mobile") === "true";
     let c = getCarousel(carouselName);
     if(!c){
         console.error(`${carouselName} is not the id of any carousel wrapper :(`);
@@ -117,10 +126,15 @@ function prev(carouselName){
     clone.style.zIndex = '1';
     parent.prepend(clone);
     c.itemNumber = mod(c.itemNumber - 1, c.length);
-    c.carousel.style.transition = 'transform 0.3s, bottom 0s';
+    c.carousel.style.transition = 'transform 0.3s';
     c.backlog -= 1;
-    c.carousel.style.transform = `translateY(${-c.backlog * 100}%`;
-    c.carousel.style.bottom = `${-c.backlog * 100}%`;
+    c.carousel.style.transform = `translate${is_mobile ? 'X' : 'Y'}(${-c.backlog * 100}%`;
+    if (!is_mobile){
+        c.carousel.style.bottom = `${-c.backlog * 100}%`;
+    }
+    else{
+        c.carousel.style.right = `${-c.backlog * 100}%`;
+    }
     c.carousel.addEventListener("transitionend", ()=>{
         s.remove();
         c.backlog += 1;

@@ -1,0 +1,380 @@
+/*
+*************
+* MORE INFO *
+*************
+*/
+.info-wrapper {
+    float: right;
+    width: calc(100% - max(40%, 32rem));
+    height: 100%;
+    
+}
+
+.extra-info {
+    
+    width: 100%;
+    /*position: absolute;*/
+    animation-duration: 0.5s;
+    
+
+}
+
+.right-content {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow-y: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.extra-info .card-holder{
+    width: 100%;
+    height: 80%;
+    margin-top: 10%;
+    
+}
+.extra-info .thumbnail-holder{
+    width: 100%;
+    height: 80%;
+    margin-top: 10%;
+    
+}
+
+@media only screen and (max-aspect-ratio: 12/7) {
+    
+    .info-wrapper {
+        position: absolute;
+        margin: 0 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        
+    }
+    .right-content{
+        pointer-events: inherit;
+    }
+    .extra-info{
+        width: 100%;
+        pointer-events: none;
+        background-color:rgba(100,100,100,0.3);
+     
+    }
+    .extra-info.active{
+        pointer-events: initial;
+    }
+    .extra-info .card-holder {
+        width: 80%;
+        height: 80%;
+        margin: 0 10% 10% 10%;
+    }
+    
+
+}
+
+.extra-info .x-button {
+    border: none;
+    background-color: transparent;
+    color: #F9D9C0;
+    font-size: 3rem;
+    width: 3rem;
+    height: 3rem;
+    text-align: center;
+    line-height: 3rem;
+}
+
+.button-bar{
+    margin-top: auto;
+}
+.extra-info .x-button{
+    transform: scale(1);
+    transition: transform .3s ease-out;
+}
+
+.extra-info .x-button:hover {
+    transform: scale(1.2);
+    
+    
+}
+.extra-info .x-button:active{
+    transform: scale(0.8);
+    transition: transform 0.15s ease-out;
+}
+
+.extra-info:not(.active){
+    display: none;
+}
+.extra-info.active{
+    animation-name: slide-up;
+    display: flex;
+}
+
+@keyframes slide-up {
+    0%{
+        transform: translateY(200vh);
+    }
+    100%{
+        transform: translateY(0vh);
+    }
+}
+@keyframes slide-away {
+    0%{
+        transform: translateY(0vh);
+    }
+    100%{
+        transform: translateY(-200vh);
+        display: none;
+    }
+}
+.card {
+    width: 80%;
+    margin: 0 10%;
+    position: relative;
+    animation-fill-mode: both;
+    animation-timing-function: ease-in;
+    animation-duration: 1s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.thumbnail {
+    width: 40%;
+    margin: 0 5%;
+    position: relative;
+    animation-fill-mode: both;
+    animation-timing-function: ease-in;
+    animation-duration: 1s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.thumbnail-holder{
+    width: 40%;
+}
+.artwork {
+    
+    width: 80%;
+}
+.card:not(.active) {
+    display: block;
+}
+.card.active {
+    display: block;
+}
+
+.wrapper{
+    position: relative;
+    height: 100%;
+    flex-direction: column;
+    justify-content: center;
+}
+
+
+.carousel-bg{
+    position: relative;
+    display: flex;
+    height: 70%;
+    flex-direction: column;
+    justify-content: center;
+    
+
+}
+
+.moving-parts{
+    height: calc(100% - 60px);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    color: var(--font-color-front);
+    overflow: hidden;
+}
+.titles{
+    display: flex;
+    flex-direction: column;
+    width: 20%;
+    margin-right: 0.5rem;
+    
+    
+
+}
+a {
+  text-decoration: inherit;
+  color: inherit;
+}
+.titles .title{
+    font-size: 0.75rem;
+    font-weight: 200;
+    text-align: right;
+    white-space: nowrap;
+    position: relative;
+    width: calc(1000%);
+    transform: translateX(-90%);
+    z-index: 1000;
+
+
+}
+.title.bold{
+    font-weight: 400;
+}
+
+.carousel{
+    /* height: 100%; */
+    width: 80%;
+    position: relative; /*importatnt*/
+    transition: transform 0.3s, bottom 0s;
+    
+}
+.slide {
+    display: flex;
+    /*
+    align-items: stretch;
+    justify-content: space-around;
+    */
+    justify-content: flex-start;
+    height: 100%;
+    width: 100%;
+    margin-bottom: 30px;
+}
+/*
+.content{
+    display: flex;
+    height: 100%;
+    align-items: stretch;
+    justify-content: space-around;
+
+}
+*/
+.img-container {
+    height: 100%;
+    aspect-ratio: 1;
+    position: relative;
+}
+
+.img-container .img {
+
+    border: 4px solid var(--font-color-front);
+    background-color: var(--font-color-front);
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    position: absolute;
+}
+
+
+.img-container .description{ 
+   
+    max-width: 100%;
+    font-size: 0.75rem;
+    line-height: 1rem;
+    font-weight: 200;
+    position: absolute;
+    z-index: 10000;
+    transition: all ease-out 0.3s;
+    color: #f9d9c000;
+    padding: 10%;
+    width: calc(100% - 8px);
+    height: calc(100% - 8px);
+    margin-top: 4px;
+    margin-left: 4px;
+
+}
+
+.img-container:hover .description{
+    /*background-color: rgba(0,0,0,.4);*/
+    color: #f9d9c0;
+
+}
+.img img{
+    transition: filter 0.3s;
+}
+.img-container:hover img {
+    filter: blur(5px) saturate(25%) brightness(50%);
+}
+
+
+.img img{
+    max-width: 100%;
+    max-height: 100%;
+    object-fit:fill;
+    /*border: 4px solid var(--font-color-front);*/
+    background-color: var(--font-color-front);
+    -ms-user-select: none; 
+    user-select: none;
+}
+/*ADD "transparent" class to non rectangular images" */
+.img img.transparent{
+    background-color: transparent;
+}
+
+/*selects for text paragraph div*/
+/*used to be "content" is not slide*/
+/*flex-grow: 1;*/
+
+.img .caption{
+    max-width: 100%;
+    max-height: 100%;
+
+    object-fit: cover;
+    position: fixed;
+    font-size: 0.75rem;
+    line-height: 1rem;
+    font-weight: 200;
+    z-index: 100;
+    bottom: 100%;
+    display: none;
+}
+.img:hover .caption{
+    background-color: rgba(0,0,0,0.6);
+    display: block;
+}
+.slide p{    
+    margin-top: 1.75rem;
+    hyphens: auto; 
+}
+
+.button{
+    z-index: 10000;
+    
+    position: relative;
+    /*
+    border-radius: 50%;
+    */
+    width: 30px;
+    height: 30px;
+    /*padding-top: 5%; /*use this for responsive button size*/
+    background-color: transparent;
+    margin-left: 19.5%;
+    text-align: center;
+    -ms-user-select: none; 
+    user-select: none;
+    
+    
+    transition: transform .3s ease-out;
+}
+
+.button:hover {
+    transform: scale(1.2);
+    
+}
+
+.button.next{
+    transform: rotateZ(180deg);
+    order: 4;
+    position: relative;
+    transition: transform .3s ease-out;
+}
+
+.button.next:hover {
+    transform: rotateZ(180deg) scale(1.2);
+}
+
+.about-info{
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+}
+.about-info .x-button {
+    margin-bottom: 10%;
+}

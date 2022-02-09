@@ -1,0 +1,44 @@
+/* mobile media query*/
+@media only screen and (hover: none), (pointer: course){
+    :root {
+        --is-mobile:true;
+    }
+    .extra-info {
+        position: absolute;
+        width: 100vw;
+        height: 100vh;
+        background-color: var(--color-front);
+    }
+    .carousel-bg {
+        height: 100%;
+    }
+    .carousel-bg .button{
+        display: none;
+    }
+    .moving-parts{
+        flex-direction: column;
+    }
+    .titles .title{
+        font-size: 2rem;
+        transform: none;
+        width: 100%;
+        text-justify: left;
+        margin-left: 5%;
+    }
+    .carousel {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+    }
+    .slide{
+        width: 100vw;
+        height: 90vw;
+        padding: 0 5vw;
+        flex-shrink: 0;
+    }
+    .img-container .description{
+        font-size: 2rem;
+        line-height: normal;
+        overflow-y: scroll;
+    }
+}
