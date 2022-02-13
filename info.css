@@ -248,7 +248,8 @@ a {
 */
 .img-container {
     height: 100%;
-    aspect-ratio: 1;
+    /*aspect-ratio: 1;*/
+    width: min(100%,calc(70vh - 60px));
     position: relative;
 }
 
