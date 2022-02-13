@@ -55,7 +55,6 @@ for(let i = 0; i < currButtons.length; i++){
         let back = document.getElementsByClassName(getLeftFace(getLeftFace(origin)))[0];
         let front = document.getElementsByClassName(origin)[0];
         front.classList.replace("active","inactive");
-        //console.log(back);
 
         front.style.animationName = `light-dark-dark`;
         left.style.animationName = `dark-light-dark`;
@@ -151,7 +150,7 @@ function removeActive(className){
 }
 
 //gives active class to element with specified id. also gives that element a slideshow if it isnt already
-function setActive(id,isThumb = false) {
+function setActive(id) {
     let element = document.getElementById(id);
     if(!element){
         console.error(`info page[${id}] has not beed set up yet!`);
@@ -162,10 +161,6 @@ function setActive(id,isThumb = false) {
     if(c){
         getCarousel(c.id);
     }
-    else{
-        
-    }
-    return;
 }
 
 //gives the x buttons functions
@@ -207,9 +202,7 @@ connectButtons("info-button");
     let abt = document.getElementsByClassName("to-back");
     for(let i = 0; i < abt.length; ++i){
         abt[i].addEventListener("click",(e)=>{
-            console.log("pong");
             window.addEventListener("animationend",(e)=>{
-                console.log("pingo");
                 setActive("about");
             },{once: true})
         });

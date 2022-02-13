@@ -3,6 +3,9 @@
     :root {
         --is-mobile:true;
     }
+    .cube-face button {
+        font-size: 2rem;
+    }
     .extra-info {
         position: absolute;
         width: 100vw;
