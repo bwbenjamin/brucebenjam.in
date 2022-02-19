@@ -203,7 +203,13 @@ connectButtons("info-button");
     for(let i = 0; i < abt.length; ++i){
         abt[i].addEventListener("click",(e)=>{
             window.addEventListener("animationend",(e)=>{
-                setActive("about");
+                let is_mobile = getComputedStyle(document.querySelector(":root"))
+                    .getPropertyValue("--is-mobile") === "true";
+                    let is_mini = getComputedStyle(document.querySelector(":root"))
+                    .getPropertyValue("--is-mini") === "true";
+                if (!is_mobile && !is_mini) {
+                    setActive("about");
+                }
             },{once: true})
         });
     }
